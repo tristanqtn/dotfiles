@@ -15,8 +15,6 @@
 
     home.stateVersion = "26.05";
 
-    programs.git.enable = true;
-
     home.packages = with pkgs; [
       ripgrep
       discord
