@@ -1,4 +1,4 @@
-{ hostname, username, pkgs, ... }:
+{ hostname, username, pkgs, lib, ... }:
 
 {
   imports = [
@@ -78,5 +78,9 @@
   ];
 
   system.stateVersion = "25.11";
+
+  # Enable theme
+  stylix.enable = lib.mkForce true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 }
 

@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-
+    
     settings = { 
       user = {
         name  = "tristanqtn";
@@ -12,6 +12,5 @@
      init.defaultBranch = "main";
       pull.rebase = true;
     };
-
   };
 }
