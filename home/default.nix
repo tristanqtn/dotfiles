@@ -1,5 +1,10 @@
 { username, ... }:
 {
+  imports = [
+    ./firefox
+    ./vscode
+    ./git
+  ]
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
@@ -14,6 +19,7 @@
     home.packages = with pkgs; [
       ripgrep
     ];
+  
   };
 }
 
