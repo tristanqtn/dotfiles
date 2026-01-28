@@ -1,5 +1,5 @@
 {
-  description = "Tristan's configuration";
+  description = "Drachh's configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -14,12 +14,12 @@
   let 
     system = "x86_64-linux";
 
-    hostname = "hostname";
-    username = "username";
+    hostname = "nixOS";
+    username = "drachh";
   in
   {
     nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
+      nixOS = nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
