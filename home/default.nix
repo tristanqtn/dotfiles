@@ -35,7 +35,9 @@ in
       python314Packages.pipx
       nodejs_25
       eza
+      openvpn
       fd
+      vivid
       obsidian
       _1password-gui
     ])++ (with myCustomPkgs; [
