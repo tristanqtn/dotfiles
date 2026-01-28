@@ -14,10 +14,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, stylix }: 
-  let 
+  outputs = inputs @ { 
+    self, 
+    nixpkgs, 
+    home-manager, 
+    stylix,
+    firefox-addons,
+    nvf,
+    ...
+  }: let 
     system = "x86_64-linux";
 
     hostname = "nixOS";
@@ -34,7 +51,7 @@
 
         modules = [ 
           ({ ... }: {
-            _module.args = { inherit hostname username; };
+            _module.args = { inherit hostname username nvf; };
             home-manager.extraSpecialArgs = { };
           })
 
@@ -43,6 +60,7 @@
           ./home
 
           stylix.nixosModules.stylix
+
         ];
       };
     };

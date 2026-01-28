@@ -3,6 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./docker
+    ./virtualbox
+    ./theme
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -29,12 +32,16 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  # To disable installing GNOME's suite of applications
+  # and only be left with GNOME shell.
+  services.gnome.core-apps.enable = true;
+  services.gnome.core-developer-tools.enable = true;
+  services.gnome.games.enable = false;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -66,9 +73,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+
   };
 
   security.sudo.wheelNeedsPassword = true;
