@@ -2,6 +2,6 @@
 {
   programs.vscode = {
     enable = true;
-  }
+  };
 } 
   
