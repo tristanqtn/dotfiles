@@ -1,0 +1,294 @@
+/* ==================== FIREFOX DRACULA THEME ==================== */
+
+/* Dracula Color Palette */
+:root {
+    --dracula-bg: #282a36;
+    --dracula-current-line: #44475a;
+    --dracula-selection: #44475a;
+    --dracula-foreground: #f8f8f2;
+    --dracula-comment: #6272a4;
+    --dracula-cyan: #8be9fd;
+    --dracula-green: #50fa7b;
+    --dracula-orange: #ffb86c;
+    --dracula-pink: #ff79c6;
+    --dracula-purple: #bd93f9;
+    --dracula-red: #ff5555;
+    --dracula-yellow: #f1fa8c;
+}
+
+/* ===== MAIN BROWSER COLORS ===== */
+:root {
+    --toolbar-bgcolor: var(--dracula-bg) !important;
+    --toolbar-color: var(--dracula-foreground) !important;
+    --lwt-accent-color: var(--dracula-bg) !important;
+    --lwt-text-color: var(--dracula-foreground) !important;
+    --arrowpanel-background: var(--dracula-bg) !important;
+    --arrowpanel-color: var(--dracula-foreground) !important;
+    --autocomplete-popup-background: var(--dracula-bg) !important;
+    --autocomplete-popup-color: var(--dracula-foreground) !important;
+    --autocomplete-popup-highlight-background: var(--dracula-selection) !important;
+    --lwt-sidebar-background-color: var(--dracula-bg) !important;
+    --lwt-sidebar-text-color: var(--dracula-foreground) !important;
+}
+
+/* ===== TABS ===== */
+/* Tab bar background */
+#TabsToolbar {
+    background-color: var(--dracula-bg) !important;
+}
+
+#tabbrowser-tabs {
+    background-color: var(--dracula-bg) !important;
+}
+
+/* Title bar background (window header) */
+#titlebar {
+    background-color: var(--dracula-bg) !important;
+}
+
+.titlebar-spacer {
+    background-color: var(--dracula-bg) !important;
+}
+
+.tabbrowser-tab {
+    margin-inline-start: 2px !important;
+    margin-inline-end: 2px !important;
+}
+
+.tab-background {
+    border-radius: 8px 8px 0 0 !important;
+    margin-bottom: 0 !important;
+    background: var(--dracula-current-line) !important;
+}
+
+.tab-background[selected="true"] {
+    background: var(--dracula-bg) !important;
+    box-shadow: 0 -2px 8px rgba(189, 147, 249, 0.3) !important;
+    border-top: 2px solid var(--dracula-purple) !important;
+}
+
+.tabbrowser-tab:hover .tab-background:not([selected="true"]) {
+    background: var(--dracula-selection) !important;
+}
+
+.tab-text {
+    color: var(--dracula-foreground) !important;
+}
+
+.tab-label[selected="true"] {
+    color: var(--dracula-purple) !important;
+    font-weight: 500 !important;
+}
+
+.tabbrowser-tab:not([pinned]):not(:hover) .tab-close-button {
+    display: none !important;
+}
+
+.tab-close-button {
+    color: var(--dracula-red) !important;
+}
+
+.tab-close-button:hover {
+    background-color: var(--dracula-red) !important;
+    color: var(--dracula-bg) !important;
+    border-radius: 4px !important;
+}
+
+/* ===== URL BAR ===== */
+#urlbar {
+    background-color: var(--dracula-current-line) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--dracula-comment) !important;
+    padding: 4px 8px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+#urlbar:focus-within {
+    border-color: var(--dracula-purple) !important;
+    box-shadow: 0 0 8px rgba(189, 147, 249, 0.4) !important;
+}
+
+#urlbar-input {
+    color: var(--dracula-foreground) !important;
+}
+
+#urlbar-results {
+    background-color: var(--dracula-bg) !important;
+    border: 1px solid var(--dracula-comment) !important;
+    border-radius: 8px !important;
+    margin-top: 4px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+.urlbarView-row:hover {
+    background-color: var(--dracula-selection) !important;
+}
+
+.urlbarView-row[selected] {
+    background-color: var(--dracula-purple) !important;
+    color: var(--dracula-bg) !important;
+}
+
+/* ===== TOOLBAR ===== */
+#nav-bar {
+    background-color: var(--dracula-bg) !important;
+    padding: 4px 8px !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--dracula-current-line) !important;
+}
+
+.toolbarbutton-1 {
+    border-radius: 8px !important;
+    padding: 6px !important;
+    fill: var(--dracula-foreground) !important;
+    color: var(--dracula-foreground) !important;
+}
+
+.toolbarbutton-1:hover {
+    background-color: var(--dracula-selection) !important;
+}
+
+.toolbarbutton-1[open="true"] {
+    background-color: var(--dracula-purple) !important;
+}
+
+/* ===== BOOKMARKS BAR ===== */
+#PersonalToolbar {
+    background-color: var(--dracula-bg) !important;
+    border-bottom: 1px solid var(--dracula-current-line) !important;
+}
+
+#PlacesToolbarItems .bookmark-item {
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    margin: 2px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+#PlacesToolbarItems .bookmark-item:hover {
+    background-color: var(--dracula-selection) !important;
+    color: var(--dracula-cyan) !important;
+}
+
+.bookmark-item[container] {
+    font-weight: 500 !important;
+    color: var(--dracula-purple) !important;
+}
+
+.bookmark-item[container]:hover {
+    color: var(--dracula-pink) !important;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar-box {
+    background-color: var(--dracula-bg) !important;
+    border-right: 1px solid var(--dracula-current-line) !important;
+}
+
+#sidebar-header {
+    background-color: var(--dracula-current-line) !important;
+    border-bottom: 1px solid var(--dracula-comment) !important;
+    padding: 8px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+/* ===== CONTEXT MENUS ===== */
+menupopup {
+    background-color: var(--dracula-bg) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--dracula-comment) !important;
+    padding: 4px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+menuitem {
+    border-radius: 4px !important;
+    color: var(--dracula-foreground) !important;
+}
+
+menuitem:hover {
+    background-color: var(--dracula-selection) !important;
+    color: var(--dracula-cyan) !important;
+}
+
+menuseparator {
+    border-color: var(--dracula-current-line) !important;
+}
+
+/* ===== FINDBAR ===== */
+.findbar-container {
+    background-color: var(--dracula-bg) !important;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 4px !important;
+    border: 1px solid var(--dracula-comment) !important;
+    color: var(--dracula-foreground) !important;
+}
+
+.findbar-textbox {
+    background-color: var(--dracula-current-line) !important;
+    color: var(--dracula-foreground) !important;
+    border: 1px solid var(--dracula-comment) !important;
+    border-radius: 4px !important;
+}
+
+/* ===== SCROLLBARS ===== */
+* {
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--dracula-comment) var(--dracula-bg) !important;
+}
+
+/* ===== COMPACT MODE ADJUSTMENTS ===== */
+:root[uidensity="compact"] #urlbar-container {
+    margin-block: 2px !important;
+}
+
+:root[uidensity="compact"] .toolbarbutton-1 {
+    padding: 4px !important;
+}
+
+/* ===== ANIMATIONS ===== */
+.tabbrowser-tab,
+.toolbarbutton-1,
+#urlbar,
+.bookmark-item {
+    transition: all 0.15s ease !important;
+}
+
+/* ===== DROPDOWN PANELS ===== */
+panel {
+    background-color: var(--dracula-bg) !important;
+    border: 1px solid var(--dracula-comment) !important;
+    border-radius: 8px !important;
+}
+
+.panel-arrowcontent {
+    background-color: var(--dracula-bg) !important;
+    color: var(--dracula-foreground) !important;
+}
+
+/* ===== STATUS PANEL ===== */
+#statuspanel-label {
+    background-color: var(--dracula-bg) !important;
+    border: 1px solid var(--dracula-comment) !important;
+    color: var(--dracula-foreground) !important;
+    border-radius: 4px !important;
+}
+
+/* ===== TAB LINE ===== */
+.tab-line {
+    background-color: var(--dracula-purple) !important;
+    height: 3px !important;
+}
+
+/* ===== NOTIFICATION BOX ===== */
+notification {
+    background-color: var(--dracula-current-line) !important;
+    color: var(--dracula-foreground) !important;
+    border: 1px solid var(--dracula-comment) !important;
+}
+
+/* ===== SPLITTER ===== */
+splitter {
+    background-color: var(--dracula-current-line) !important;
+    border: none !important;
+}

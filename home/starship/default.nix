@@ -1,63 +1,67 @@
-{ ... }:
+{ lib, ... }:
+
 {
-programs.starship = {
-  enable = true;                         # Enable Starship
-  package = pkgs.starship;               # Use Nixpkgs package
+  ########################################
+  # Starship
+  ########################################
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
 
-  enableBashIntegration = true;          # Enable Bash prompt
-  enableZshIntegration = false;          # Disable Zsh if using Bash
-  enableFishIntegration = false;         # Disable Fish
-  enableInteractive = true;              # Only interactive shells
+    settings = {
+      add_newline = true;
 
-  # Path where Starship config will be written, relative to home
-  configPath = ".config/starship.toml";
+      # 2-line prompt: info above, action below
+      format = lib.concatStrings [
+        "$os"
+        "$username"
+        "$directory"
+        "$git_branch"
+        "$git_status"
+        "$nix_shell"
+        "\n$character"
+      ];
 
-  # TOML settings
-  settings = {
-    # Prompt format
-    format = """
-      $all
-      $character
-    """;
+      character = {
+        success_symbol = "[❯](#BD93F9)";
+        error_symbol   = "[❯](#FF5555)";
+      };
 
-    # Customize the prompt character
-    character = { 
-      success_symbol = "➜ "; 
-      error_symbol   = "✗ "; 
-      use_symbol_for_status = true;
-      style = "bold green";
+      directory = {
+        style = "#8BE9FD";
+        truncation_length = 3;
+        truncate_to_repo = true;
+      };
+
+      git_branch = {
+        symbol = " ";
+        style = "#50FA7B";
+      };
+
+      git_status = {
+        style = "#FFB86C";
+        format = "([$all_status$ahead_behind]($style)) ";
+      };
+
+      nix_shell = {
+        symbol = " ";
+        style = "#6272A4";
+      };
+
+      os = {
+        disabled = false;
+        style = "#50FA7B";
+        symbols = {
+          NixOS = " ";
+        };
+      };
+
+      username = {
+        show_always = true;
+        style_user = "#50FA7B";
+      };
+
+      hostname.ssh_only = true;
     };
-
-    # Git branch module
-    [git_branch]
-    symbol = " "
-    style = "bold purple"
-
-    # Git status module
-    [git_status]
-    style = "bold red"
-
-    # Directory module
-    [directory]
-    style = "cyan"
-
-    # Time module
-    [time]
-    style = "bright-black"
-    disabled = false
-
-    # Line breaks
-    [line_break]
-    disabled = false
-
-    # Jobs module
-    [jobs]
-    style = "bold yellow"
-
-    # Battery module
-    [battery]
-    style = "bold green"
   };
-};
-
 }

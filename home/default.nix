@@ -1,4 +1,5 @@
-{ username, pkgs, nvf, ... }:
+{ username, firefox-addons, pkgs, nvf, ... }:
+
 let
   myCustomPkgs = import ../pkgs { inherit pkgs; };
 in
@@ -6,9 +7,23 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   home-manager.users.${username} = { pkgs, ... }: {
 
+    ########################################
+    # Home config
+    ########################################
+    home.username = "${username}";
+    home.homeDirectory = "/home/${username}";
+    home.stateVersion = "26.05";
+
+    ########################################
+    # Imports
+    ########################################
     imports = [
+      ./avatar
       ./firefox
       ./vscode
       ./git
@@ -17,16 +32,15 @@ in
       ./nvf
       ./bash
       ./tmux
-      ./wezterm
+      ./fzf
       ./zoxide
+      ./starship
       nvf.homeManagerModules.default
     ];
 
-    home.username = "${username}";
-    home.homeDirectory = "/home/${username}";
-
-    home.stateVersion = "26.05";
-
+    ########################################
+    # Home Packages
+    ########################################
     home.packages = (with pkgs; [
       ripgrep
       discord
@@ -37,6 +51,7 @@ in
       eza
       openvpn
       fd
+      xclip
       vivid
       obsidian
       _1password-gui

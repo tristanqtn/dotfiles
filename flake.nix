@@ -23,7 +23,6 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs = inputs @ { 
@@ -39,6 +38,7 @@
 
     hostname = "nixOS";
     username = "drachh";
+
   in
   {
     nixosConfigurations = {
@@ -52,7 +52,7 @@
         modules = [ 
           ({ ... }: {
             _module.args = { inherit hostname username nvf; };
-            home-manager.extraSpecialArgs = { };
+            home-manager.extraSpecialArgs = { inherit firefox-addons; };
           })
 
           home-manager.nixosModules.default

@@ -1,5 +1,9 @@
 { osConfig ? null, config, ... }:
+
 {
+  ########################################
+  # NVF
+  ########################################
   programs.nvf = {
     enable = true;
     defaultEditor = true;

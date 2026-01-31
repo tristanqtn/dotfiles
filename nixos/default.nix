@@ -1,6 +1,9 @@
 { hostname, username, pkgs, lib, ... }:
 
 {
+  ########################################
+  # OS Imports
+  ########################################
   imports = [
     ./hardware-configuration.nix
     ./docker
@@ -8,6 +11,9 @@
     ./theme
   ];
 
+  ########################################
+  # System Config
+  ########################################
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -87,9 +93,5 @@
   ];
 
   system.stateVersion = "25.11";
-
-  # Enable theme
-  stylix.enable = lib.mkForce true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 }
 

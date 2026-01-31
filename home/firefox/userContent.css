@@ -1,0 +1,118 @@
+/* ==================== WEB CONTENT DRACULA ENHANCEMENTS ==================== */
+
+/* Dracula Color Palette */
+:root {
+--dracula-bg: #282a36;
+--dracula-current-line: #44475a;
+--dracula-foreground: #f8f8f2;
+--dracula-comment: #6272a4;
+--dracula-cyan: #8be9fd;
+--dracula-green: #50fa7b;
+--dracula-orange: #ffb86c;
+--dracula-pink: #ff79c6;
+--dracula-purple: #bd93f9;
+--dracula-red: #ff5555;
+--dracula-yellow: #f1fa8c;
+}
+
+/* Smooth scrolling */
+* {
+scroll-behavior: smooth !important;
+}
+
+/* Better font rendering */
+body {
+-webkit-font-smoothing: antialiased !important;
+-moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Dracula themed new tab page */
+@-moz-document url("about:home"), url("about:newtab") {
+body {
+background-color: var(--dracula-bg) !important;
+color: var(--dracula-foreground) !important;
+}
+
+.search-wrapper input {
+background-color: var(--dracula-current-line) !important;
+border: 1px solid var(--dracula-comment) !important;
+border-radius: 24px !important;
+padding: 12px 20px !important;
+font-size: 15px !important;
+color: var(--dracula-foreground) !important;
+}
+
+.search-wrapper input:focus {
+border-color: var(--dracula-purple) !important;
+box-shadow: 0 0 8px rgba(189, 147, 249, 0.4) !important;
+}
+
+.top-site-outer {
+border-radius: 12px !important;
+background-color: var(--dracula-current-line) !important;
+}
+
+.top-site-outer:hover {
+background-color: var(--dracula-selection) !important;
+box-shadow: 0 2px 8px rgba(189, 147, 249, 0.3) !important;
+}
+
+.top-site-outer .title {
+color: var(--dracula-foreground) !important;
+}
+}
+
+/* Dracula themed about: pages */
+@-moz-document url-prefix("about:") {
+body,
+#mainContent {
+background-color: var(--dracula-bg) !important;
+color: var(--dracula-foreground) !important;
+}
+
+a {
+color: var(--dracula-cyan) !important;
+}
+
+a:hover {
+color: var(--dracula-purple) !important;
+}
+
+button {
+background-color: var(--dracula-purple) !important;
+color: var(--dracula-bg) !important;
+border: none !important;
+border-radius: 6px !important;
+padding: 8px 16px !important;
+}
+
+button:hover {
+background-color: var(--dracula-pink) !important;
+}
+
+input[type="text"],
+input[type="search"],
+textarea {
+background-color: var(--dracula-current-line) !important;
+color: var(--dracula-foreground) !important;
+border: 1px solid var(--dracula-comment) !important;
+border-radius: 4px !important;
+}
+}
+
+/* Dracula scrollbars */
+:root {
+scrollbar-width: thin !important;
+scrollbar-color: var(--dracula-comment) var(--dracula-bg) !important;
+}
+
+/* Dracula selection */
+::selection {
+background-color: var(--dracula-green) !important;
+color: var(--dracula-foreground) !important;
+}
+
+::-moz-selection {
+background-color: var(--dracula-green) !important;
+color: var(--dracula-foreground) !important;
+}

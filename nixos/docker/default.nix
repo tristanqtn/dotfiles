@@ -1,5 +1,9 @@
 { username, ... }:
+
 {
+  ########################################
+  # Docker
+  ########################################
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
@@ -11,5 +15,6 @@
     };
   };
 
+  # Fix ground permissions
   users.users.${username}.extraGroups = [ "docker" ];
 }

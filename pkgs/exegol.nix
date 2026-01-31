@@ -6,6 +6,7 @@
   supabaseAuth,
   supabaseFunctions
 }:
+
 python3Packages.buildPythonApplication rec {
   pname = "exegol";
   version = "5.1.8";

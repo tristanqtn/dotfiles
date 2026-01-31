@@ -1,12 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+
 {
+  ########################################
+  # Stylix
+  ########################################
   stylix = {
-    enable = true;
+    enable = lib.mkForce true;
     polarity = "dark";
 
-    # Gruvbox theme
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    image = ./wallpaper/background.jpg;
+    image = ./wallpaper/nixos.png;
 
     fonts = {
       monospace = {
