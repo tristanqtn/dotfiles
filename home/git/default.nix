@@ -20,6 +20,15 @@
 
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/id_ed25519";
+      
     };
+  };
+
+  ########################################
+  # GitHub
+  ########################################
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
   };
 }
