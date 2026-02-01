@@ -11,7 +11,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home-manager.users.${username} = { pkgs, ... }: {
-
     ########################################
     # Home config
     ########################################
@@ -23,18 +22,27 @@ in
     # Imports
     ########################################
     imports = [
+      # Looking
       ./avatar
+      
+      # Browser
       ./firefox
-      ./vscode
+
+      # Dev
       ./git
+      ./vscode
+
+      # Terminal
       ./nh
       ./bat
       ./nvf
+      ./fzf
       ./bash
       ./tmux
-      ./fzf
       ./zoxide
       ./starship
+      ./ripgrep
+
       nvf.homeManagerModules.default
     ];
 
@@ -42,18 +50,20 @@ in
     # Home Packages
     ########################################
     home.packages = (with pkgs; [
-      ripgrep
-      discord
+      # Python
       python314
       python314Packages.pip
       python314Packages.pipx
-      nodejs_25
+
+      # Others
       eza
       openvpn
       fd
       xclip
       vivid
+      discord
       obsidian
+      nodejs_25
       _1password-gui
     ])++ (with myCustomPkgs; [
     exegol

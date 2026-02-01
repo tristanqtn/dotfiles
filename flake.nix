@@ -26,12 +26,12 @@
   };
 
   outputs = inputs @ { 
+    nvf,
     self, 
+    stylix,
     nixpkgs, 
     home-manager, 
-    stylix,
     firefox-addons,
-    nvf,
     ...
   }: let 
     system = "x86_64-linux";
@@ -56,11 +56,10 @@
           })
 
           home-manager.nixosModules.default
-          ./nixos
           ./home
-
+          ./nixos
+ 
           stylix.nixosModules.stylix
-
         ];
       };
     };
