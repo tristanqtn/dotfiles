@@ -26,7 +26,7 @@
       # eza
       ls   = "${pkgs.eza}/bin/eza --group-directories-first";
       l    = "${pkgs.eza}/bin/eza -lah --git";
-      ll   = "${pkgs.eza}/bin/eza -lh --git";
+      ll   = "${pkgs.eza}/bin/eza -lah --git";
       tree = "${pkgs.eza}/bin/eza -T --git-ignore";
 
       # git
@@ -34,16 +34,19 @@
       gl = "git log --oneline --graph --decorate --color=always";
       gd = "git diff";
       ga = "git add .";
+      gm = "git commit -m";
+      gp = "git push";
 
       # nix
       rebuild = "sudo nixos-rebuild switch";
       update  = "sudo nixos-rebuild switch --upgrade";
-      switch  = "nh os switch .";
+      switch  = "nh os switch";
 
       # misc
       v  = "nvim";
       co = "code .";
       ex = "xdg-open .";
+      dot = "cd ~/dotfiles";
 
     };
 
