@@ -1,4 +1,6 @@
-# dotfiles
+# Drachh's NixOS Config
+
+## Installation
 
 **Retrieve hardware configuration**
 ```bash
@@ -20,3 +22,13 @@ switch
 ```
 
 ---
+
+## Format
+
+```bash
+nix-shell -p nixfmt-tree
+
+cd dotfiles
+
+treefmt
+```

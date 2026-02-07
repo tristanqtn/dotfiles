@@ -46,6 +46,8 @@
       nixpkgs,
       home-manager,
       firefox-addons,
+
+      # Deactivated
       #niri,
       #noctalia,
       ...
@@ -55,7 +57,6 @@
 
       hostname = "nixOS";
       username = "drachh";
-
     in
     {
       nixosConfigurations = {

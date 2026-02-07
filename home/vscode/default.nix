@@ -39,6 +39,7 @@
       "terminal.integrated.fontSize" = 20.0;
       "workbench.colorTheme" = "Stylix";
       "workbench.iconTheme" = "material-icon-theme";
+      "git.confirmSync": false
     };
   };
 }
