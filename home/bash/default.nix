@@ -48,7 +48,7 @@
       # nix
       rebuild = "sudo nixos-rebuild switch";
       update = "sudo nixos-rebuild switch --upgrade";
-      switch = "nh os switch";
+      switch = "nh os switch -q";
 
       # misc
       v = "nvim";
