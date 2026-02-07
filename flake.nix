@@ -23,6 +23,19 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Deactivated
+    # Niri window manager
+    #niri = {
+    #  url = "github:sodiboo/niri-flake";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+
+    # Noctalia shell
+    #noctalia = {
+    #  url = "github:noctalia-dev/noctalia-shell";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
   outputs = inputs @ { 
@@ -32,6 +45,8 @@
     nixpkgs, 
     home-manager, 
     firefox-addons,
+    #niri,
+    #noctalia,
     ...
   }: let 
     system = "x86_64-linux";
@@ -46,13 +61,13 @@
         inherit system;
 
         specialArgs = {
-          inherit hostname username;
+          inherit hostname username inputs;
         };
 
         modules = [ 
           ({ ... }: {
-            _module.args = { inherit hostname username nvf; };
-            home-manager.extraSpecialArgs = { inherit firefox-addons; };
+            _module.args = { inherit hostname username nvf inputs; };
+            home-manager.extraSpecialArgs = { inherit firefox-addons inputs; };
           })
 
           home-manager.nixosModules.default
@@ -60,6 +75,13 @@
           ./nixos
  
           stylix.nixosModules.stylix
+          
+          # Deactivated
+          # Niri module
+          #niri.nixosModules.niri
+          
+          # Noctalia NixOS module
+          #noctalia.nixosModules.default
         ];
       };
     };

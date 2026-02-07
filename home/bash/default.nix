@@ -2,6 +2,14 @@
 
 {
   ########################################
+  # Screenfetch
+  ########################################
+  # Ensure screenfetch is available
+  #home.packages = with pkgs; [
+  #  screenfetch
+  #];
+
+  ########################################
   # Readline (vi mode + cursor shape)
   ########################################
   programs.readline = {
@@ -47,7 +55,7 @@
       co = "code .";
       ex = "xdg-open .";
       dot = "cd ~/dotfiles";
-
+      reload = "source ~/.bashrc";
     };
 
     initExtra = ''
@@ -106,6 +114,13 @@
         so=38;5;214:
         pi=38;5;214:
       "
+      ####################################
+      # Minimal startup info with screenfetch
+      ####################################
+      #if command -v screenfetch >/dev/null 2>&1; then
+      #  # -N disables logo, prints system info only
+      #  screenfetch -N
+      #fi
     '';
   };
 }

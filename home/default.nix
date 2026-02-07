@@ -42,8 +42,11 @@ in
       ./zoxide
       ./starship
       ./ripgrep
-
+      ./alacritty
       nvf.homeManagerModules.default
+
+      # Deactivated
+      #./noctalia
     ];
 
     ########################################
@@ -55,6 +58,10 @@ in
       python314Packages.pip
       python314Packages.pipx
 
+      # File manager
+      gnome-text-editor
+      nautilus
+
       # Others
       eza
       openvpn
@@ -65,10 +72,20 @@ in
       obsidian
       nodejs_25
       _1password-gui
+
+      # Noctalia Shell Required Packages
+      # Screenshot tools
+      #grim
+      #slurp
+      #grimblast
+      # Clipboard
+      #wl-clipboard
+      # Other utilities
+      #pavucontrol
+      #networkmanagerapplet
     ])++ (with myCustomPkgs; [
     exegol
   ]);
-  
   };
 }
 

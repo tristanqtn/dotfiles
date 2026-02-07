@@ -7,8 +7,12 @@
   imports = [
     ./hardware-configuration.nix
     ./docker
-    ./virtualbox
     ./theme
+
+    # Deactivated
+    #./niri
+    #./virtualbox
+
   ];
 
   ########################################
@@ -19,6 +23,11 @@
 
   networking.hostName = "${hostname}";
   networking.networkmanager.enable = true;
+
+  # Required services for Noctalia features
+  #hardware.bluetooth.enable = true;
+  #services.power-profiles-daemon.enable = true;
+  #services.upower.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -44,8 +53,8 @@
 
   # To disable installing GNOME's suite of applications
   # and only be left with GNOME shell.
-  services.gnome.core-apps.enable = true;
-  services.gnome.core-developer-tools.enable = true;
+  services.gnome.core-apps.enable = false;
+  services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
 
 
@@ -94,4 +103,3 @@
 
   system.stateVersion = "25.11";
 }
-
