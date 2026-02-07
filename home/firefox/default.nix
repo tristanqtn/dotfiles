@@ -1,4 +1,9 @@
-{ username, firefox-addons, pkgs, ... }:
+{
+  username,
+  firefox-addons,
+  pkgs,
+  ...
+}:
 
 let
   firefox-addons-allowUnfree = pkgs.callPackage firefox-addons { };
@@ -11,7 +16,7 @@ in
     enable = true;
     profiles.default = {
       isDefault = true;
-      
+
       ########################################
       # Configuration
       ########################################
@@ -19,67 +24,67 @@ in
         # Startup
         "browser.startup.page" = 1;
         "browser.startup.homepage" = "https://www.google.com/";
-        
+
         # Enable custom CSS
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        
+
         # File picker
         "widget.use-xdg-desktop-portal.file-picker" = 1;
-        
+
         # Smooth scrolling
         "general.smoothScroll" = true;
         "general.smoothScroll.msdPhysics.enabled" = true;
-        
+
         # Hardware acceleration
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.hardware-video-decoding.force-enabled" = true;
-        
+
         # Performance
         "browser.cache.disk.enable" = true;
         "browser.cache.memory.enable" = true;
         "browser.sessionhistory.max_total_viewers" = 4;
-        
+
         # UI Density (compact mode)
         "browser.uidensity" = 1; # 0=normal, 1=compact, 2=touch
-        
+
         # Font rendering
         "gfx.font_rendering.cleartype_params.rendering_mode" = 5;
         "gfx.font_rendering.cleartype_params.cleartype_level" = 100;
-        
+
         # Tab bar
         "browser.tabs.tabMinWidth" = 100;
         "browser.tabs.drawInTitlebar" = true;
-        
+
         # Animations
         "ui.prefersReducedMotion" = 0; # Enable animations
-        
+
         # Privacy
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
-        
+
         # Downloads
         "browser.download.useDownloadDir" = true;
         "browser.download.autohideButton" = false;
-        
+
         # New tab page
         "browser.newtabpage.activity-stream.feeds.topsites" = true;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = true;
-        
+
         # Force dark theme
         "ui.systemUsesDarkTheme" = 1;
         "browser.theme.dark-private-windows" = true;
       };
-      
+
       ########################################
       # Style
       ########################################
       # Custom CSS for Firefox UI (userChrome.css) - Dracula Theme
-      userChrome = builtins.readFile ./userChrome.css; 
+      userChrome = builtins.readFile ./userChrome.css;
       # Custom CSS for web content (userContent.css) - Dracula Theme
-      userContent = builtins.readFile ./userChrome.css; 
-      
+      userContent = builtins.readFile ./userChrome.css;
+
       ########################################
       # Extensions
       ########################################
@@ -108,50 +113,80 @@ in
 
           nix-packages = {
             name = "Nix Packages";
-            urls = [{
+            urls = [
+              {
                 template = "https://search.nixos.org/packages";
                 params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "channel"; value = "unstable"; }
-                    { name = "query"; value = "{searchTerms}"; }
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
                 ];
-            }];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
           };
 
           nixos-options = {
             name = "Nixos Options";
-            urls = [{
+            urls = [
+              {
                 template = "https://search.nixos.org/options";
                 params = [
-                    { name = "type"; value = "options"; }
-                    { name = "channel"; value = "unstable"; }
-                    { name = "query"; value = "{searchTerms}"; }
+                  {
+                    name = "type";
+                    value = "options";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
                 ];
-            }];
+              }
+            ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@no" ];
           };
 
           youtube = {
-              name = "YouTube";
-              urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
-              icon = "https://www.youtube.com/favicon.ico";
-              definedAliases = [ "@yt" ];
+            name = "YouTube";
+            urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
+            icon = "https://www.youtube.com/favicon.ico";
+            definedAliases = [ "@yt" ];
           };
 
           home-manager-options = {
-              name = "Home Manager Options";
-              urls = [{ 
-                  template = "https://home-manager-options.extranix.com/"; 
-                  params = [
-                      { name = "release"; value = "master"; }
-                      { name = "query"; value = "{searchTerms}"; }
-                  ];
-              }];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@hm" ];
+            name = "Home Manager Options";
+            urls = [
+              {
+                template = "https://home-manager-options.extranix.com/";
+                params = [
+                  {
+                    name = "release";
+                    value = "master";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@hm" ];
           };
         };
       };
@@ -170,7 +205,7 @@ in
                 bookmarks = [
                   {
                     name = "Home Manager Search";
-                    url  = "https://home-manager-options.extranix.com/?query=&release=master";
+                    url = "https://home-manager-options.extranix.com/?query=&release=master";
                   }
                   {
                     name = "Packages Search";

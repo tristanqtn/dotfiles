@@ -1,4 +1,10 @@
-{ hostname, username, pkgs, lib, ... }:
+{
+  hostname,
+  username,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   ########################################
@@ -12,7 +18,6 @@
     # Deactivated
     #./niri
     #./virtualbox
-
   ];
 
   ########################################
@@ -57,7 +62,6 @@
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
 
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
@@ -86,12 +90,17 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
 
   };
 

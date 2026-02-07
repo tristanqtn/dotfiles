@@ -1,42 +1,42 @@
 { ... }:
 
 {
-    ########################################
-    # TMUX
-    ########################################
-    programs.tmux = {
+  ########################################
+  # TMUX
+  ########################################
+  programs.tmux = {
     enable = true;
 
     # Extra config in tmux syntax
     extraConfig = ''
-        # List of plugins
-        set -g @plugin 'tmux-plugins/tpm'
-        set -g @plugin 'tmux-plugins/tmux-sensible'
-        set -g @plugin 'tmux-plugins/tmux-logging'
+      # List of plugins
+      set -g @plugin 'tmux-plugins/tpm'
+      set -g @plugin 'tmux-plugins/tmux-sensible'
+      set -g @plugin 'tmux-plugins/tmux-logging'
 
-        # Initialize TMUX plugin manager (keep at bottom)
-        run '~/.tmux/plugins/tpm/tpm'
+      # Initialize TMUX plugin manager (keep at bottom)
+      run '~/.tmux/plugins/tpm/tpm'
 
-        # Improve colors
-        set -g default-terminal 'screen-256color'
+      # Improve colors
+      set -g default-terminal 'screen-256color'
 
-        # Set scrollback buffer to 10000
-        set -g history-limit 10000
+      # Set scrollback buffer to 10000
+      set -g history-limit 10000
 
-        # Customize the status line
-        set -g status-fg  green
-        set -g status-bg  black
-        set -g mouse on
-        set -g mode-keys vi
+      # Customize the status line
+      set -g status-fg  green
+      set -g status-bg  black
+      set -g mouse on
+      set -g mode-keys vi
 
-        set-option -s set-clipboard off
-        bind P paste-buffer
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi y send-keys -X rectangle-toggle
+      set-option -s set-clipboard off
+      bind P paste-buffer
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X rectangle-toggle
 
-        unbind -T copy-mode-vi Enter
-        bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
-        bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
+      unbind -T copy-mode-vi Enter
+      bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
     '';
-    };
+  };
 }

@@ -1,35 +1,34 @@
-{ osConfig ? null, config ? null}:
+{
+  osConfig ? null,
+  config ? null,
+}:
 
 let
   hasOsConfig = osConfig != null;
   hasConfig = config != null;
 
-  user = if hasConfig
-         then config.home.username
-         else "drachh";
+  user = if hasConfig then config.home.username else "drachh";
 
-  host =
-    if hasOsConfig
-    then osConfig.networking.hostName
-    else "nixOS";
+  host = if hasOsConfig then osConfig.networking.hostName else "nixOS";
 
   flakePrefix = "(builtins.getFlake (toString ./.)).";
 
   nixosOptionsExpr = "${flakePrefix}nixosConfigurations.${host}.options";
 
   # home manager option as a nixos module
-  hmOptionsFromNixosExpr =
-    "${nixosOptionsExpr}.home-manager.users.type.getSubOptions []";
+  hmOptionsFromNixosExpr = "${nixosOptionsExpr}.home-manager.users.type.getSubOptions []";
 
   # Standalone home manager expr
-  hmOptionsFromHomeCfgExpr =
-    "${flakePrefix}homeConfigurations.\"${user}@${host}\".options";
+  hmOptionsFromHomeCfgExpr = "${flakePrefix}homeConfigurations.\"${user}@${host}\".options";
 in
 {
   keymaps = [
-    # Allow to navigate between line if they overflow 
+    # Allow to navigate between line if they overflow
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "j";
       action = "v:count == 0 ? 'gj' : 'j'";
       expr = true;
@@ -37,7 +36,10 @@ in
       desc = "Down";
     }
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "<Down>";
       action = "v:count == 0 ? 'gj' : 'j'";
       expr = true;
@@ -45,7 +47,10 @@ in
       desc = "Down";
     }
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "k";
       action = "v:count == 0 ? 'gk' : 'k'";
       expr = true;
@@ -53,7 +58,10 @@ in
       desc = "Up";
     }
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "<Up>";
       action = "v:count == 0 ? 'gk' : 'k'";
       expr = true;
@@ -63,7 +71,10 @@ in
 
     # H -> beginning of line
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "H";
       action = "^";
       silent = true;
@@ -72,7 +83,10 @@ in
 
     # L -> end of line
     {
-      mode = [ "n" "x" ];
+      mode = [
+        "n"
+        "x"
+      ];
       key = "L";
       action = "$";
       silent = true;
@@ -119,36 +133,43 @@ in
         # !! This might not work on standalone home manager as host will not exist
         nixd = {
           options =
-            if hasOsConfig then {
-              nixos.expr = nixosOptionsExpr;
-              home_manager.expr = hmOptionsFromNixosExpr;
-            } else if hasConfig then {
-              home_manager.expr = hmOptionsFromHomeCfgExpr;
-            } else null;
+            if hasOsConfig then
+              {
+                nixos.expr = nixosOptionsExpr;
+                home_manager.expr = hmOptionsFromNixosExpr;
+              }
+            else if hasConfig then
+              {
+                home_manager.expr = hmOptionsFromHomeCfgExpr;
+              }
+            else
+              null;
         };
-      };        
+      };
     };
   };
 
-  statusline.lualine.enable = true;           # https://github.com/nvim-lualine/lualine.nvim
-  autocomplete.blink-cmp.enable = true;       # https://github.com/hrsh7th/nvim-cmp
-  git.vim-fugitive.enable = true;             # https://github.com/tpope/vim-fugitive
-  visuals.indent-blankline.enable = true;     # https://github.com/lukas-reineke/indent-blankline.nvim
-  visuals.rainbow-delimiters.enable = true;   # https://github.com/HiPhish/rainbow-delimiters.nvim
+  statusline.lualine.enable = true; # https://github.com/nvim-lualine/lualine.nvim
+  autocomplete.blink-cmp.enable = true; # https://github.com/hrsh7th/nvim-cmp
+  git.vim-fugitive.enable = true; # https://github.com/tpope/vim-fugitive
+  visuals.indent-blankline.enable = true; # https://github.com/lukas-reineke/indent-blankline.nvim
+  visuals.rainbow-delimiters.enable = true; # https://github.com/HiPhish/rainbow-delimiters.nvim
   mini.move.enable = true;
-  
-  tabline.nvimBufferline = {                  # https://github.com/akinsho/bufferline.nvim
+
+  tabline.nvimBufferline = {
+    # https://github.com/akinsho/bufferline.nvim
     enable = true;
     setupOpts.options = {
       numbers = "none";
       indicator.style = "none";
-      sort_by =  "insert_at_end";
+      sort_by = "insert_at_end";
     };
   };
 
-  utility.motion.leap.enable = true;           # https://codeberg.org/andyg/leap.nvim
+  utility.motion.leap.enable = true; # https://codeberg.org/andyg/leap.nvim
 
-  utility.oil-nvim = {                         # https://github.com/stevearc/oil.nvim
+  utility.oil-nvim = {
+    # https://github.com/stevearc/oil.nvim
     enable = true;
     gitStatus.enable = true;
     setupOpts = {
@@ -156,7 +177,8 @@ in
     };
   };
 
-  telescope = {                                # https://github.com/nvim-telescope/telescope.nvim
+  telescope = {
+    # https://github.com/nvim-telescope/telescope.nvim
     enable = true;
     mappings = {
       findFiles = "ff";
@@ -164,7 +186,8 @@ in
     };
   };
 
-  binds.whichKey = {                           # https://github.com/folke/which-key.nvim
+  binds.whichKey = {
+    # https://github.com/folke/which-key.nvim
     enable = true;
     register = {
       "<leader>f" = "+Telescope";

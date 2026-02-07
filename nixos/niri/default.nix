@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   ########################################
@@ -34,7 +39,7 @@
 
   # Required for screen sharing and other features
   services.dbus.enable = true;
-  
+
   # Audio support
   security.rtkit.enable = true;
   services.pipewire = {

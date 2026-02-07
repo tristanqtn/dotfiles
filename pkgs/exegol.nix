@@ -4,7 +4,7 @@
   python3Packages,
   xorg,
   supabaseAuth,
-  supabaseFunctions
+  supabaseFunctions,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -45,7 +45,10 @@ python3Packages.buildPythonApplication rec {
     ++ pyjwt.optional-dependencies.crypto
     ++ [ xorg.xhost ]
     ++ lib.optional (!stdenv.hostPlatform.isLinux) tzlocal
-    ++ [ supabaseAuth supabaseFunctions ];
+    ++ [
+      supabaseAuth
+      supabaseFunctions
+    ];
 
   doCheck = true;
 
@@ -80,4 +83,3 @@ python3Packages.buildPythonApplication rec {
     ];
   };
 }
-

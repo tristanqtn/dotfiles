@@ -38,52 +38,64 @@
     #};
   };
 
-  outputs = inputs @ { 
-    nvf,
-    self, 
-    stylix,
-    nixpkgs, 
-    home-manager, 
-    firefox-addons,
-    #niri,
-    #noctalia,
-    ...
-  }: let 
-    system = "x86_64-linux";
+  outputs =
+    inputs@{
+      nvf,
+      self,
+      stylix,
+      nixpkgs,
+      home-manager,
+      firefox-addons,
+      #niri,
+      #noctalia,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
 
-    hostname = "nixOS";
-    username = "drachh";
+      hostname = "nixOS";
+      username = "drachh";
 
-  in
-  {
-    nixosConfigurations = {
-      nixOS = nixpkgs.lib.nixosSystem {
-        inherit system;
+    in
+    {
+      nixosConfigurations = {
+        nixOS = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs = {
-          inherit hostname username inputs;
+          specialArgs = {
+            inherit hostname username inputs;
+          };
+
+          modules = [
+            (
+              { ... }:
+              {
+                _module.args = {
+                  inherit
+                    hostname
+                    username
+                    nvf
+                    inputs
+                    ;
+                };
+                home-manager.extraSpecialArgs = { inherit firefox-addons inputs; };
+              }
+            )
+
+            home-manager.nixosModules.default
+            ./home
+            ./nixos
+
+            stylix.nixosModules.stylix
+
+            # Deactivated
+            # Niri module
+            #niri.nixosModules.niri
+
+            # Noctalia NixOS module
+            #noctalia.nixosModules.default
+          ];
         };
-
-        modules = [ 
-          ({ ... }: {
-            _module.args = { inherit hostname username nvf inputs; };
-            home-manager.extraSpecialArgs = { inherit firefox-addons inputs; };
-          })
-
-          home-manager.nixosModules.default
-          ./home
-          ./nixos
- 
-          stylix.nixosModules.stylix
-          
-          # Deactivated
-          # Niri module
-          #niri.nixosModules.niri
-          
-          # Noctalia NixOS module
-          #noctalia.nixosModules.default
-        ];
       };
     };
-  };
 }

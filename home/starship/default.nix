@@ -24,7 +24,7 @@
 
       character = {
         success_symbol = "[❯](#BD93F9)";
-        error_symbol   = "[❯](#FF5555)";
+        error_symbol = "[❯](#FF5555)";
       };
 
       directory = {

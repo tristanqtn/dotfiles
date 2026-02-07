@@ -6,7 +6,7 @@
   ########################################
   programs.alacritty = {
     enable = true;
-    
+
     settings = {
       colors = {
         primary = {
@@ -14,17 +14,17 @@
           foreground = lib.mkForce "#f8f8f2";
           bright_foreground = lib.mkForce "#ffffff";
         };
-        
+
         cursor = {
           text = lib.mkForce "CellBackground";
           cursor = lib.mkForce "CellForeground";
         };
-        
+
         vi_mode_cursor = {
           text = lib.mkForce "CellBackground";
           cursor = lib.mkForce "CellForeground";
         };
-        
+
         search = {
           matches = {
             foreground = lib.mkForce "#44475a";
@@ -35,7 +35,7 @@
             background = lib.mkForce "#ffb86c";
           };
         };
-        
+
         hints = {
           start = {
             foreground = lib.mkForce "#282a36";
@@ -46,22 +46,22 @@
             background = lib.mkForce "#282a36";
           };
         };
-        
+
         line_indicator = {
           foreground = lib.mkForce "None";
           background = lib.mkForce "None";
         };
-        
+
         footer_bar = {
           foreground = lib.mkForce "#282a36";
           background = lib.mkForce "#f8f8f2";
         };
-        
+
         selection = {
           text = lib.mkForce "CellForeground";
           background = lib.mkForce "#44475a";
         };
-        
+
         normal = {
           black = lib.mkForce "#21222c";
           red = lib.mkForce "#ff5555";
@@ -72,7 +72,7 @@
           cyan = lib.mkForce "#8be9fd";
           white = lib.mkForce "#f8f8f2";
         };
-        
+
         bright = {
           black = lib.mkForce "#6272a4";
           red = lib.mkForce "#ff6e6e";
@@ -84,7 +84,7 @@
           white = lib.mkForce "#ffffff";
         };
       };
-      
+
       # Font configuration
       font = {
         normal = {
@@ -105,7 +105,7 @@
         };
         size = lib.mkForce 11.0;
       };
-      
+
       window = {
         opacity = lib.mkForce 0.95;
         padding = {
@@ -116,13 +116,13 @@
         startup_mode = lib.mkForce "Windowed";
         dynamic_title = lib.mkForce true;
       };
-      
+
       # Scrolling
       scrolling = {
         history = 10000;
         multiplier = 3;
       };
-      
+
       # Cursor
       cursor = {
         style = {
@@ -131,19 +131,19 @@
         };
         unfocused_hollow = true;
       };
-      
+
       # Bell
       bell = {
         animation = "EaseOutExpo";
         duration = 0;
         color = "#ffffff";
       };
-      
+
       # Mouse
       mouse = {
         hide_when_typing = false;
       };
-      
+
       # Hints (URL clicking)
       hints = {
         enabled = [

@@ -32,9 +32,9 @@
 
     shellAliases = {
       # eza
-      ls   = "${pkgs.eza}/bin/eza --group-directories-first";
-      l    = "${pkgs.eza}/bin/eza -lah --git";
-      ll   = "${pkgs.eza}/bin/eza -lah --git";
+      ls = "${pkgs.eza}/bin/eza --group-directories-first";
+      l = "${pkgs.eza}/bin/eza -lah --git";
+      ll = "${pkgs.eza}/bin/eza -lah --git";
       tree = "${pkgs.eza}/bin/eza -T --git-ignore";
 
       # git
@@ -47,11 +47,11 @@
 
       # nix
       rebuild = "sudo nixos-rebuild switch";
-      update  = "sudo nixos-rebuild switch --upgrade";
-      switch  = "nh os switch";
+      update = "sudo nixos-rebuild switch --upgrade";
+      switch = "nh os switch";
 
       # misc
-      v  = "nvim";
+      v = "nvim";
       co = "code .";
       ex = "xdg-open .";
       dot = "cd ~/dotfiles";

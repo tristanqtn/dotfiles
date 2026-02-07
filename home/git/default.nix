@@ -7,10 +7,10 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    
-    settings = { 
+
+    settings = {
       user = {
-        name  = "tristanqtn";
+        name = "tristanqtn";
         email = "tristan.querton@gmail.com";
       };
       init.defaultBranch = "main";
@@ -20,7 +20,7 @@
 
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/id_ed25519";
-      
+
     };
   };
 
